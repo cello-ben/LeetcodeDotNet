@@ -28,3 +28,5 @@ However, that's not what's needed; we want an array of char arrays. A perfect ta
 ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
 ['.', '.', '.', '.', '8', '.', '.', '7', '9']
 ```
+
+Just had to pop on one more set of brackets, and I was good to go.
