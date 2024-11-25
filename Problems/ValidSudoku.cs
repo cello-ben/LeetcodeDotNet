@@ -1,4 +1,4 @@
-﻿namespace LeetcodeDotNet.Proble
+﻿namespace LeetcodeDotNet.Problems
 {
     internal class ValidSudoku
     {
