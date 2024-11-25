@@ -121,7 +121,7 @@ namespace LeetcodeDotNet
 
             if (pascalsTriangleHasError)
             {
-                Console.WriteLine("Test FAILED. Expected:");
+                Console.Error.WriteLine("Test FAILED. Expected:");
                 PascalsTriangle.PrintPascalsTriangle(pascalsTriangleExpectedResult1);
                 Console.WriteLine("Got:");
                 totalErrors++;
@@ -143,7 +143,7 @@ namespace LeetcodeDotNet
 
             if (pascalsTriangleResult2.Count != 1 || pascalsTriangleResult2[0].Count != 1 || pascalsTriangleResult2[0][0] != 1)
             {
-                Console.WriteLine("Test FAILED. Expected:");
+                Console.Error.WriteLine("Test FAILED. Expected:");
                 PascalsTriangle.PrintPascalsTriangle(pascalsTriangleExpectedResult2);
                 Console.WriteLine("Got:");
                 PascalsTriangle.PrintPascalsTriangle(pascalsTriangleResult2);
@@ -153,6 +153,66 @@ namespace LeetcodeDotNet
             {
                 Console.WriteLine("Test passed.");
             }
+            Console.Write("\n");
+
+            Console.WriteLine("FindRepeatedDNASequences");
+            Console.WriteLine("Testing \"AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT\", which should yield: [\"AAAAACCCCC\", \"CCCCCAAAAA\"]");
+            List<string> dnaSequenceResult1 = RepeatedDNASequences.FindRepeatedDNASequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT");
+
+            if (dnaSequenceResult1.Count != 2 || dnaSequenceResult1[0] != "AAAAACCCCC" || dnaSequenceResult1[1] != "CCCCCAAAAA")
+            {
+                Console.Error.Write("Test FAILED. Expected: [\"AAAAACCCCC\", \"CCCCCAAAAA\"] Got: [");
+                for (int i = 0; i < dnaSequenceResult1.Count - 1; i++)
+                {
+                    Console.Error.Write("\"" + dnaSequenceResult1[i] + "\"" + ", ");
+                }
+                if (dnaSequenceResult1.Count > 0)
+                {
+                    Console.Error.Write("\"" + dnaSequenceResult1.Last() + "\"");
+                }
+                Console.Error.Write("]\n");
+            }
+            else
+            {
+                Console.WriteLine("Test passed.");
+            }
+            Console.Write("\n");
+
+            Console.WriteLine("HammingWeight");
+            (int, int)[] hammingWeightTestCases = [(11, 3), (128, 1), (2147483645, 30)];
+            foreach ((int testCase, int expectedResult) testTuple in hammingWeightTestCases)
+            {
+                Console.WriteLine($"Testing {testTuple.testCase}, which should yield {testTuple.expectedResult}.");
+                int res = NumberOf1Bits.HammingWeight(testTuple.testCase);
+                if (res != testTuple.expectedResult)
+                {
+                    Console.Error.WriteLine($"Test FAILED. Expected: {testTuple.expectedResult} Got: {res}");
+                    totalErrors++;
+                }
+                else
+                {
+                    Console.WriteLine("Test passed.");
+                }
+            }
+            Console.Write("\n");
+
+            Console.WriteLine("IsHappyNumber");
+            (int, bool)[] happyNumberTestCases = [(19, true), (2, false)];
+            foreach ((int testCase, bool expectedResult) testTuple in happyNumberTestCases)
+            {
+                Console.WriteLine($"Testing {testTuple.testCase}, which should yield {testTuple.expectedResult}.");
+                bool res = HappyNumber.IsHappyNumber(testTuple.testCase);
+                if (res != testTuple.expectedResult)
+                {
+                    Console.Error.WriteLine($"Test FAILED. Expected: {testTuple.expectedResult} Got: {res}");
+                    totalErrors++;
+                }
+                else
+                {
+                    Console.WriteLine("Test passed.");
+                }
+            }
+            Console.Write("\n");
 
             return totalErrors;
         }
