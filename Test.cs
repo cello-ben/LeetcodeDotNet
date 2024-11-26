@@ -221,6 +221,7 @@ namespace LeetcodeDotNet
                 if (res != testTuple.expectedResult)
                 {
                     Console.Error.WriteLine($"Test FAILED. Expected: {testTuple.expectedResult} Got: {res}");
+                    totalErrors++;
                 }
                 else
                 {
@@ -228,6 +229,25 @@ namespace LeetcodeDotNet
                 }
             }
             Console.Write("\n");
+
+            Console.WriteLine("RepeatedlyAddDigits");
+            (int, int)[] repeatedlyAddDigitsTestCases = [(38, 2), (0, 0)];
+            foreach ((int testCase, int expectedResult) testsTuple in repeatedlyAddDigitsTestCases)
+            {
+                Console.WriteLine($"Testing {testTuple.testCase}, which should yield {testTuple.expectedResult}");
+                int res = AddDigits.RepeatedlyAddDigits(testTuple.testCase);
+                if (res != testTuple.expectedResult)
+                {
+                    Console.Error.WriteLine($"Test FAILED. Expected: {testTuple.expectedResult} Got: {res}");
+                    totalErrors++;
+                }
+                else
+                {
+                    Console.WriteLine("Test passed.");
+                }
+            }
+            Console.Write("\n");
+
             return totalErrors;
         }
     }
