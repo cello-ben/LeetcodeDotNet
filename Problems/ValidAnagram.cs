@@ -1,4 +1,4 @@
-namespace LeetcodeDotNET.Problems
+namespace LeetcodeDotNet.Problems
 {
     internal class ValidAnagram
     {

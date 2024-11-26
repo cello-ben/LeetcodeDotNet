@@ -1,5 +1,6 @@
 ﻿
 using LeetcodeDotNet.Problems;
+using LeetcodeDotNet.Util;
 
 namespace LeetcodeDotNet
 {
@@ -14,7 +15,7 @@ namespace LeetcodeDotNet
             //AreValidParentheses
             (string, bool)[] areValidParenthesesTestCases = [("()", true), ("()[]{}", true), ("(]", false), ("([])", true)];
             
-            Console.WriteLine("AreValidParentheses\n");
+            Console.WriteLine("AreValidParentheses");
             foreach ((string testCase, bool expectedResult) testTuple in areValidParenthesesTestCases)
             {
                 Console.WriteLine($"Testing \"{testTuple.testCase}\", which should yield {testTuple.expectedResult}.");
@@ -29,7 +30,7 @@ namespace LeetcodeDotNet
                     Console.WriteLine("Test passed.");
                 }
             }
-            Console.WriteLine("");
+            Console.Write("\n");
 
             //IsValidSudoku
             (char[][] testCase, bool)[] isValidSudokuTestCases = [
@@ -56,7 +57,7 @@ namespace LeetcodeDotNet
                 ], false)
             ];
 
-            Console.WriteLine("AreValidParentheses");
+            Console.WriteLine("IsValidSudoku");
             foreach ((char[][] testCase, bool expectedResult) testTuple in isValidSudokuTestCases)
             {
                 Console.WriteLine($"Testing [[{new string(testTuple.testCase[0])}]");
@@ -64,7 +65,7 @@ namespace LeetcodeDotNet
                 {
                     Console.WriteLine($"\t[{new string(testTuple.testCase[i])}],");
                 }
-                Console.WriteLine($"\t[{new string(testTuple.testCase[testTuple.testCase.Length - 1])}], which should yield {testTuple.expectedResult}.\"");
+                Console.WriteLine($"\t[{new string(testTuple.testCase[testTuple.testCase.Length - 1])}], which should yield {testTuple.expectedResult}.");
                 bool res = ValidSudoku.IsValidSudoku(testTuple.testCase);
                 if (res != testTuple.expectedResult)
                 {
@@ -76,7 +77,7 @@ namespace LeetcodeDotNet
                     Console.WriteLine("Test passed.");
                 }
             }
-            Console.WriteLine("");
+            Console.Write("\n");
 
 
 
@@ -90,6 +91,7 @@ namespace LeetcodeDotNet
 
             List<List<int>> pascalsTriangleResult1 = PascalsTriangle.CreatePascalsTriangle(5);
             Console.WriteLine("CreatePascalsTriangle");
+
             Console.WriteLine("Testing 5, which should yield:");
             PascalsTriangle.PrintPascalsTriangle(pascalsTriangleExpectedResult1);
 
@@ -232,7 +234,7 @@ namespace LeetcodeDotNet
 
             Console.WriteLine("RepeatedlyAddDigits");
             (int, int)[] repeatedlyAddDigitsTestCases = [(38, 2), (0, 0)];
-            foreach ((int testCase, int expectedResult) testsTuple in repeatedlyAddDigitsTestCases)
+            foreach ((int testCase, int expectedResult) testTuple in repeatedlyAddDigitsTestCases)
             {
                 Console.WriteLine($"Testing {testTuple.testCase}, which should yield {testTuple.expectedResult}");
                 int res = AddDigits.RepeatedlyAddDigits(testTuple.testCase);
@@ -247,6 +249,40 @@ namespace LeetcodeDotNet
                 }
             }
             Console.Write("\n");
+
+            Console.WriteLine("MyQueue");
+            Console.WriteLine("Testing Push(1), Push(2), Peek, Pop, Empty, which should yield: [1], [2], 2, 2, false.");
+            MyQueue queue = new MyQueue();
+            queue.Push(1);
+            queue.Push(2);
+            bool queueHasError = false;
+            List<int> stack = queue.GetStack();
+            if (stack.Count != 2 || stack[0] != 1 || stack[1] != 2)
+            {
+                queueHasError = true;
+            }
+            int n = queue.Peek();
+            if (n != 1)
+            {
+                queueHasError = true;
+            }
+            n = queue.Pop();
+            if (n != 1)
+            {
+                queueHasError = true;
+            }
+            if (queue.Empty())
+            {
+                queueHasError = true;
+            }
+            if (queueHasError)
+            {
+                Console.WriteLine($"Test FAILED."); //TODO Expand
+            }
+            else
+            {
+                Console.WriteLine("Test passed.");
+            }
 
             return totalErrors;
         }
