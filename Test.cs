@@ -211,7 +211,23 @@ namespace LeetcodeDotNet
                 }
             }
             Console.Write("\n");
-
+            
+            Console.WriteLine("IsValidAnagram");
+            (string, string, bool)[] validAnagramTestCases = [("anagram", "nagaram", true), ("rat", "car", false)];
+            foreach ((string word1, string word2, bool expectedResult) testTuple in validAnagramTestCases)
+            {
+                Console.WriteLine($"Testing {testTuple.word1} and {testTuple.word2}, which should yield {testTuple.expectedResult}");
+                bool res = ValidAnagram.IsValidAnagram(testTuple.word1, testTuple.word2);
+                if (res != testTuple.expectedResult)
+                {
+                    Console.Error.WriteLine($"Test FAILED. Expected: {testTuple.expectedResult} Got: {res}");
+                }
+                else
+                {
+                    Console.WriteLine("Test passed.");
+                }
+            }
+            Console.Write("\n");
             return totalErrors;
         }
     }
