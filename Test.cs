@@ -1,6 +1,5 @@
 ﻿
 using LeetcodeDotNet.Problems;
-using LeetcodeDotNet.Util;
 
 namespace LeetcodeDotNet
 {
@@ -283,6 +282,9 @@ namespace LeetcodeDotNet
             {
                 Console.WriteLine("Test passed.");
             }
+
+            //TODO Learn if/why <string> necessary.
+            Console.WriteLine(Util.StringifyArray<string>(new string[] {"Hello", "Goodbye"}));
 
             return totalErrors;
         }

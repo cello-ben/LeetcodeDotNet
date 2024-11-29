@@ -1,6 +1,4 @@
-﻿
-
-using LeetcodeDotNet;
+﻿using LeetcodeDotNet;
 
 public class Program
 {
@@ -8,5 +6,6 @@ public class Program
     {
         int errors = Test.TestSolutions();
         Console.WriteLine(errors > 0 ? $"Total errors: {errors}" : "No errors...fantastic!");
+        
     }
 }
