@@ -217,7 +217,7 @@ namespace LeetcodeDotNet
             (string, string, bool)[] validAnagramTestCases = [("anagram", "nagaram", true), ("rat", "car", false)];
             foreach ((string word1, string word2, bool expectedResult) testTuple in validAnagramTestCases)
             {
-                Console.WriteLine($"Testing {testTuple.word1} and {testTuple.word2}, which should yield {testTuple.expectedResult}");
+                Console.WriteLine($"Testing {testTuple.word1} and {testTuple.word2}, which should yield {testTuple.expectedResult}.");
                 bool res = ValidAnagram.IsValidAnagram(testTuple.word1, testTuple.word2);
                 if (res != testTuple.expectedResult)
                 {
@@ -235,7 +235,7 @@ namespace LeetcodeDotNet
             (int, int)[] repeatedlyAddDigitsTestCases = [(38, 2), (0, 0)];
             foreach ((int testCase, int expectedResult) testTuple in repeatedlyAddDigitsTestCases)
             {
-                Console.WriteLine($"Testing {testTuple.testCase}, which should yield {testTuple.expectedResult}");
+                Console.WriteLine($"Testing {testTuple.testCase}, which should yield {testTuple.expectedResult}.");
                 int res = AddDigits.RepeatedlyAddDigits(testTuple.testCase);
                 if (res != testTuple.expectedResult)
                 {
@@ -282,10 +282,29 @@ namespace LeetcodeDotNet
             {
                 Console.WriteLine("Test passed.");
             }
+            Console.Write("\n");
 
             //TODO Learn if/why <string> necessary.
-            Console.WriteLine(Util.StringifyArray<string>(new string[] {"Hello", "Goodbye"}));
+            //Console.WriteLine(Util.StringifyArray<string>(new string[] {"Hello", "Goodbye"}));
 
+            Console.WriteLine("FormatLicenseKey");
+            (string, int, string)[] formatLicenseKeyTestCases = [("5F3Z-2e-9-w", 4, "5F3Z-2E9W"), ("2-5g-3-J", 2, "2-5G-3J")];
+            foreach ((string key, int k, string expectedResult) testTuple in formatLicenseKeyTestCases)
+            {
+                Console.WriteLine($"Testing key = \"{testTuple.key}\", k = {testTuple.k}, which should yield \"{testTuple.expectedResult}\".");
+                string res = LicenseKeyFormatting.FormatLicenseKey(testTuple.key, testTuple.k);
+                if (res != testTuple.expectedResult)
+                {
+                    Console.WriteLine($"Test FAILED. Expected: {testTuple.expectedResult} Got: {res}");
+                }
+                else
+                {
+                    Console.WriteLine("Test passed.");
+                }
+            }
+
+            Console.Write("\n");
+            
             return totalErrors;
         }
     }
